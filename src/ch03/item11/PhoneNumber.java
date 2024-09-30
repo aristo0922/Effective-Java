@@ -16,10 +16,24 @@ public class PhoneNumber {
     return (short) val;
   }
 
+  private int hashCode;
   @Override
   public int hashCode(){
-    return Objects.hash(lineNum, prefix, areaCode);
+    int result = hashCode;
+    if(result == 0){
+      result = Short.hashCode(areaCode);
+      result = 31* result + Short.hashCode(prefix);
+      result = 31* result + Short.hashCode(lineNum);
+      hashCode = result;
+    }
+    return result;
   }
+
+
+//  @Override
+//  public int hashCode(){
+//    return Objects.hash(lineNum, prefix, areaCode);
+//  }
 
 //
 //  // 전형적인 hashCode 메서드
