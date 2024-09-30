@@ -15,13 +15,7 @@ public final class CaseInsensitiveString {
 
   @Override
   public boolean equals(Object o) {
-    if (o instanceof CaseInsensitiveString) {
-      return s.equalsIgnoreCase(((CaseInsensitiveString) o).s);
-    }
-    if (o instanceof String){ // 한 방향으로만 작동
-      return s.equalsIgnoreCase((String) o);
-    }
-    return false;
+    return o instanceof CaseInsensitiveString && ((CaseInsensitiveString) o).s.equalsIgnoreCase(s);
   }
 
   public static void main(String[] args){
