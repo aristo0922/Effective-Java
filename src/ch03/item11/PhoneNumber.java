@@ -1,5 +1,7 @@
 package ch03.item11;
 
+import java.util.Objects;
+
 public class PhoneNumber {
   private final short areaCode, prefix, lineNum;
   public PhoneNumber(int areaCode, int prefix, int lineNum){
@@ -14,14 +16,20 @@ public class PhoneNumber {
     return (short) val;
   }
 
-  // 전형적인 hashCode 메서드
   @Override
   public int hashCode(){
-    int result = Short.hashCode(areaCode);
-    result = 31 * result + Short.hashCode(prefix);
-    result = 31 * result + Short.hashCode(lineNum);
-    return result;
+    return Objects.hash(lineNum, prefix, areaCode);
   }
+
+//
+//  // 전형적인 hashCode 메서드
+//  @Override
+//  public int hashCode(){
+//    int result = Short.hashCode(areaCode);
+//    result = 31 * result + Short.hashCode(prefix);
+//    result = 31 * result + Short.hashCode(lineNum);
+//    return result;
+//  }
 
   @Override
   public boolean equals(Object o){
