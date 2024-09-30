@@ -1,4 +1,4 @@
-package ch03.transivity;
+package ch03.item10.transivity;
 
 public class SmellPoint extends Point{
   private final Smell smell;

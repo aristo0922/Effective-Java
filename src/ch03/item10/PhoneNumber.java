@@ -1,4 +1,4 @@
-package ch03;
+package ch03.item10;
 
 public class PhoneNumber {
   private final short areaCode, prefix, lineNum;

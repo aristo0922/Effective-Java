@@ -1,4 +1,4 @@
-package ch03;
+package ch03.item10;
 
 import java.util.ArrayList;
 import java.util.List;

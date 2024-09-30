@@ -1,4 +1,4 @@
-package ch03.transivity;
+package ch03.item10.transivity;
 
 public enum Color {
   RED("빨강"),

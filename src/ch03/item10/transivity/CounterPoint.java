@@ -1,4 +1,4 @@
-package ch03.transivity;
+package ch03.item10.transivity;
 
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
