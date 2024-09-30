@@ -1,11 +1,19 @@
 package ch03.transivity;
 
-public class ColorPoint extends Point{
+import java.util.Objects;
+
+public class ColorPoint{
 
   private final Color color;
+  private final Point point;
+
   public ColorPoint(int x, int y, Color color) {
-    super(x, y);
-    this.color = color;
+    point = new Point(x, y);
+    this.color = Objects.requireNonNull(color);
+  }
+
+  public Point asPoint(){
+    return point;
   }
 
   // 추이성 위배

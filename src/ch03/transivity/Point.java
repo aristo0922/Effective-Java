@@ -12,6 +12,8 @@ public class Point {
 
   @Override
   public boolean equals(Object o){
+    if( o == null )
+      return false;
     if(o== null || o.getClass() != getClass())
       return false;
     Point p = (Point) o;
