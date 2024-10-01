@@ -14,26 +14,17 @@ public class HashTable implements Cloneable{
       this.next = next;
     }
 
-    // 이 엔트리가 가리키는 연결리스트를 재귀적으로 복사
-    Entry deepCopy(){
-      Entry result = new Entry(key, value, next);
-      for (Entry p = result; p.next != null; p = p.next)
-        p.next = new Entry(p.next.key, p.next.value, p.next.next);
-      return result;
-    }
+//    // 이 엔트리가 가리키는 연결리스트를 반복적으 복사
+//    Entry deepCopy(){
+//      Entry result = new Entry(key, value, next);
+//      for (Entry p = result; p.next != null; p = p.next)
+//        p.next = new Entry(p.next.key, p.next.value, p.next.next);
+//      return result;
+//    }
   }
 
   @Override
-  public HashTable clone(){
-    try{
-      HashTable result = (HashTable) super.clone();
-      result.buckets = new Entry[buckets.length];
-      for (int i = 0; i < buckets.length ;i++)
-        if (buckets[i] != null)
-          result.buckets[i]= buckets[i].deepCopy();
-      return result;
-    } catch (CloneNotSupportedException e){
-      throw new AssertionError();
-    }
+  public final Object clone() throws CloneNotSupportedException{
+    throw new CloneNotSupportedException();
   }
 }
