@@ -16,7 +16,10 @@ public class HashTable implements Cloneable{
 
     // 이 엔트리가 가리키는 연결리스트를 재귀적으로 복사
     Entry deepCopy(){
-      return new Entry(key, value, next == null? null: next.deepCopy());
+      Entry result = new Entry(key, value, next);
+      for (Entry p = result; p.next != null; p = p.next)
+        p.next = new Entry(p.next.key, p.next.value, p.next.next);
+      return result;
     }
   }
 
