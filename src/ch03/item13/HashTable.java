@@ -13,14 +13,21 @@ public class HashTable implements Cloneable{
       this.value = value;
       this.next = next;
     }
+
+    // 이 엔트리가 가리키는 연결리스트를 재귀적으로 복사
+    Entry deepCopy(){
+      return new Entry(key, value, next == null? null: next.deepCopy());
+    }
   }
 
-  //clone 재귀적으로 호출해보기
   @Override
   public HashTable clone(){
     try{
       HashTable result = (HashTable) super.clone();
-      result.buckets = buckets.clone();
+      result.buckets = new Entry[buckets.length];
+      for (int i = 0; i < buckets.length ;i++)
+        if (buckets[i] != null)
+          result.buckets[i]= buckets[i].deepCopy();
       return result;
     } catch (CloneNotSupportedException e){
       throw new AssertionError();
