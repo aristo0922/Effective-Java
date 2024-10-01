@@ -8,6 +8,20 @@ public class PhoneNumber {
     this.lineNum = rangeCheck(lineNum, 9999, "가입자 번호");
   }
 
+  public int compareTo(PhoneNumber pn){
+    // 가장 중요한 필드
+    int result = Short.compare(areaCode, pn.areaCode);
+    if (result == 0){
+      // 두번재 중요한 필드
+      result = Short.compare(prefix, pn.prefix);
+      if(result == 0){
+        // 세번재 중요한 필드
+        result = Short.compare(lineNum, pn.lineNum);
+      }
+    }
+    return result;
+  }
+
   @Override
   public PhoneNumber clone(){
     try{
