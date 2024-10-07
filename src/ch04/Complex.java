@@ -1,5 +1,7 @@
 package ch04;
 
+import java.math.BigInteger;
+
 public final class Complex {
 
   private final double re; // 실수
@@ -12,6 +14,10 @@ public final class Complex {
 
   public static Complex valueOf(double re, double im) {
     return new Complex(re, im);
+  }
+
+  public static BigInteger safeInstance(BigInteger val){
+    return val.getClass() == BigInteger.class ? val: new BigInteger(val.toByteArray());
   }
 
   public double realPart() {
