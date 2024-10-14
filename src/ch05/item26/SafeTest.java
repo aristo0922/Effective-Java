@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SafeTest {
   public static void main(String[] args){
-    List<String> strings = new ArrayList<>();
+    List<Object> strings = new ArrayList<>();
     unsafeAdd(strings, Integer.valueOf(42));
     String s = strings.get(0);
   }
