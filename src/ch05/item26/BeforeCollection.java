@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BeforeCollection {
 //  private final Collection stamps ;
-  private static final List<Stamp> stamps = new ArrayList();
+  private static final List stamps = new ArrayList();
   private static class Coin{
     int size = 0;
   }
@@ -19,7 +19,7 @@ public class BeforeCollection {
   }
 
   public static void main(String[] args){
-    stamps.add(new Coin()); // 컴파일 오류
+    stamps.add(new Coin());
     for(Iterator i =stamps.iterator(); i.hasNext();){
       Stamp stamp = (Stamp) i.next();
       stamp.cancel();
