@@ -1,6 +1,7 @@
 package ch05.item31;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.EmptyStackException;
 
 public class Stack<E> {
@@ -47,5 +48,10 @@ public class Stack<E> {
     for(E e: src){
       push(e);
     }
+  }
+
+  public void popAll(Collection<E> dst){
+    while(!isEmpty())
+      dst.add(pop());
   }
 }
