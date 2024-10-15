@@ -50,7 +50,7 @@ public class Stack<E> {
     }
   }
 
-  public void popAll(Collection<E> dst){
+  public void popAll(Collection<? super E> dst){
     while(!isEmpty())
       dst.add(pop());
   }
