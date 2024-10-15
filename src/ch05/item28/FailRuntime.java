@@ -11,8 +11,8 @@ public class FailRuntime {
     objectArray[0] = "타입이 달라 넣을 수 없다.";// ArrayStoreException 발생
 
     // 컴파일 실패 코드
-    List<Object> objectList = new ArrayList<Long>();
-    objectList.add("타입이 달라 넣을 수 없다.");
+//    List<Object> objectList = new ArrayList<Long>();
+//    objectList.add("타입이 달라 넣을 수 없다.");
   }
 
 
