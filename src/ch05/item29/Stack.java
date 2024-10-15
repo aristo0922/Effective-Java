@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 
 public class Stack<E> {
 
-  private E[] elements;
+  private Object[] elements;
   private int size = 0;
   private static final int DEFAULT_INITIAL_CAPACITY = 16;
 
@@ -14,7 +14,7 @@ public class Stack<E> {
   // 이 배열의 런타임 타입은 E[] 가 아닌 Object[] 다.
   @SuppressWarnings("unchecked")
   public Stack() {
-    elements = new E[DEFAULT_INITIAL_CAPACITY];//28- 실체화 불가 타입으로 배열을 만들 수 없다.
+    elements = (E[]) new Object[DEFAULT_INITIAL_CAPACITY];//28- 실체화 불가 타입으로 배열을 만들 수 없다.
   }
 
   public void push(E e) {
@@ -26,8 +26,11 @@ public class Stack<E> {
     if (size == 0) {
       throw new EmptyStackException();
     }
-    E result = elements[--size];
-    elements[size] = null;
+    // push 에서 E 타입만 허용하므로 이 형변환은 안전하다.
+    @SuppressWarnings("unchecked")
+    E result = (E) elements[--size];
+
+    elements[size] = null; // 다 쓴 참조 해제
     return result;
   }
 
