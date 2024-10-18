@@ -6,7 +6,7 @@ public class Member implements Serializable {
 
   private String name;
   private transient String email;
-  private int age;
+  private transient int age;
 
   public Member(String name, String email, int age){
     this.name= name;
