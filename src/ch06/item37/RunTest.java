@@ -1,5 +1,7 @@
 package ch06.item37;
 
+import static java.util.stream.Collectors.groupingBy;
+
 import ch06.item37.Plant.LifeCycle;
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -7,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RunTest {
 
@@ -16,6 +19,24 @@ public class RunTest {
     ordinalAsArrayIndex(garden);
     System.out.println("--- 구분선 ---");
     enumMapping(garden);
+
+//    System.out.println(Arrays.stream(garden).collect(groupingBy(p -> p.lifeCycle)));
+    System.out.println();
+    streamV1(garden);
+    streamV2(garden);
+  }
+
+  public static void streamV1(List<Plant> garden) {
+    Map plantsByLifeCycle = garden.stream().collect(Collectors.groupingBy(plant -> plant.lifeCycle));
+    System.out.println(plantsByLifeCycle);
+  }
+
+  public static void streamV2(List<Plant> garden) {
+    Map plantsByLifeCycle = garden.stream()
+        .collect(Collectors.groupingBy(plant -> plant.lifeCycle,
+            () -> new EnumMap<>(LifeCycle.class), Collectors.toSet()));
+    System.out.println("스트림 사용 Map");
+    System.out.println(plantsByLifeCycle);
   }
 
   public static void enumMapping(List<Plant> garden){
@@ -33,7 +54,7 @@ public class RunTest {
   public static List<Plant> initGarden(){
     Plant corn = new Plant("옥수수", LifeCycle.ANNUAL);
     Plant pea = new Plant("완두", LifeCycle.ANNUAL);
-    Plant potato = new Plant("감자", LifeCycle.PERNNIAL);
+    Plant potato = new Plant("감자", LifeCycle.PERENNIAL);
     Plant alceaRosea = new Plant("접시꽃", LifeCycle.BIENNIAL);
 
     return Arrays.asList(corn, alceaRosea, pea, potato);

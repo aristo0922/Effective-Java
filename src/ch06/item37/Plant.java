@@ -2,7 +2,7 @@ package ch06.item37;
 
 public class Plant {
 
-  enum LifeCycle {ANNUAL, PERNNIAL, BIENNIAL}
+  enum LifeCycle {ANNUAL, PERENNIAL, BIENNIAL}
 
   final String name;
   final LifeCycle lifeCycle;
