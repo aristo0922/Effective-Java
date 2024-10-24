@@ -1,4 +1,4 @@
-package ch07.item42;
+package ch07.item42.Anonymous;
 
 public class AnonymousClass {
 
