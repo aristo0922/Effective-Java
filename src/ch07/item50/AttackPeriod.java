@@ -8,6 +8,6 @@ public class AttackPeriod {
     Date start = new Date();
     Date end = new Date();
     Period p = new Period(start, end);
-    end.setYear(78); // p 내부 수정하기 (deprecated)
+    p.end().setYear(78); // p 내부 수정하기 (deprecated)
   }
 }
