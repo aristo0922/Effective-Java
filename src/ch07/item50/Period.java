@@ -13,12 +13,13 @@ public final class Period {
    * @throws NullPointerException start 나 end 가 null 이면 발생한다.
    * */
   public Period(Date start, Date end){
-    if (start.compareTo(end) > 0)
+    this.start = new Date(start.getTime());
+    this.end = new Date(end.getTime());
+
+    if (this.start.compareTo(this.end) > 0)
       throw new IllegalArgumentException(
-          start + "가 "+end+"보다 늦다."
+          this.start + "가 " + this.end +"보다 늦다."
       );
-    this.start = start;
-    this.end = end;
   }
 
   public Date start(){
