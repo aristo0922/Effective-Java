@@ -1,4 +1,4 @@
-package ch07.item42.item49;
+package ch07.item49;
 
 import java.math.BigInteger;
 import java.util.Objects;
