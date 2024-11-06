@@ -1,13 +1,17 @@
 package ch09;
 
+import java.math.BigDecimal;
+
 public class DoubleTest {
 
   public static void main(String[] args) {
-    double funds = 1.00;
+    final BigDecimal TEN_CENTS = new BigDecimal(".10");
+    BigDecimal funds = new BigDecimal("1.00");
     int itemsBought = 0;
-    for (double price = 0.10; funds >= price; price += 0.10){
-      funds -= price;
-      itemsBought++;
+    for(BigDecimal price = TEN_CENTS;
+        funds.compareTo(price) >= 0;
+        price = price.add(TEN_CENTS)){
+
     }
 
     System.out.println( itemsBought +"개 구입");
