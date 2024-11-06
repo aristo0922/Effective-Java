@@ -11,7 +11,8 @@ public class DoubleTest {
     for(BigDecimal price = TEN_CENTS;
         funds.compareTo(price) >= 0;
         price = price.add(TEN_CENTS)){
-
+      funds = funds.subtract(price);
+      itemsBought++;
     }
 
     System.out.println( itemsBought +"개 구입");
