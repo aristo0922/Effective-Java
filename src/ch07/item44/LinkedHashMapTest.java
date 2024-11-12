@@ -10,4 +10,9 @@ public class LinkedHashMapTest<K, V> extends LinkedHashMap<K, V> {
     return size() > 100;
   }
 
+  @FunctionalInterface
+  interface EldestEntryRemovalFunction<K, V>{
+    boolean remove(Map<K, V> map, Map.Entry<K, V> eldest);
+  }
+
 }
