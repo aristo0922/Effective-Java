@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 public class Item73<E> {
 
-  static ListIterator<E> listIterator(int index) {
+  ListIterator<E> listIterator(int index) {
     return null;
   }
 
@@ -14,8 +14,8 @@ public class Item73<E> {
 
     try {
       return i.next();
-    } catch (LowerLevelException cause){
-      throw new HigherLevelException(cause);
+//    } catch (LowerLevelException cause){
+//      throw new HigherLevelException(cause);
     } catch (NoSuchElementException e) {
       throw new IndexOutOfBoundsException("인덱스: " + index);
     }
