@@ -23,4 +23,8 @@ public class Item85 {
     return serialize(root);
   }
 
+  private static byte[] serialize(Set<Object> root) {
+    return new byte[0];
+  }
+
 }
