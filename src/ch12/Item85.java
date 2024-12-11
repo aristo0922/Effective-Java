@@ -1,5 +1,6 @@
 package ch12;
 
+import java.io.InvalidObjectException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +26,10 @@ public class Item85 {
 
   private static byte[] serialize(Set<Object> root) {
     return new byte[0];
+  }
+
+  private void readObjectNoData() throws InvalidObjectException{
+    throw new InvalidObjectException("스트림 데이터가 필요합니다.");
   }
 
 }
