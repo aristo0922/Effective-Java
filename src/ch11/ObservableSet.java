@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ObservableSet<E> extends ForwardingSet<E> {
   public ObservableSet(Set<E> set) {super(set);}
@@ -23,10 +26,12 @@ public class ObservableSet<E> extends ForwardingSet<E> {
   }
 
   private void notifyElementAdded(E element){
-    synchronized (observers){
-      for(SetObserver<E> observer: observers)
+    List<SetObserver<E>> snapshot = null;
+     synchronized (observers){
+       snapshot = new ArrayList<>(observers);
+     }
+    for(SetObserver<E> observer: observers)
         observer.added(this, element);
-    }
   }
 
   @Override public boolean add(E element){
@@ -45,8 +50,20 @@ public class ObservableSet<E> extends ForwardingSet<E> {
 
   public static void main(String[] args){
     ObservableSet<Integer> set = new ObservableSet<>(new HashSet<>());
-    set.addObserver((s, e) -> System.out.println(e));
-    for(int i= 0; i < 100; i++)
-      set.add(i);
+    set.addObserver(new SetObserver<>() {
+      public void added(ObservableSet<Integer> s, Integer e){
+        System.out.println(e);
+        if (e == 23){
+          ExecutorService exec = Executors.newSingleThreadExecutor();
+          try {
+            exec.submit(() -> s.removeObserver(this)).get();
+          }catch (ExecutionException | InterruptedException ex){
+            throw new AssertionError(ex);
+          } finally {
+            exec.shutdown();
+          }
+        }
+      }
+    });
   }
 }
