@@ -41,6 +41,9 @@ public final class PeriodImpl implements Period {
   private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException{
     s.defaultReadObject();
 
+    start = new Date(start.getTime());
+    end = new Date(end.getTime());
+
     if (start.compareTo(end)>0)
       throw new InvalidObjectException(start + " affter " + end);
   }
