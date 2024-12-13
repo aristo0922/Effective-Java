@@ -28,4 +28,14 @@ public class Serializer<T> {
     }
     return null;
   }
+
+  public ObjectInputStream intputStream(ByteArrayOutputStream bos){
+    ObjectInputStream in = null;
+    try{
+      in = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
+    }catch (Exception e){
+      System.out.println("Getting Object Input Stream error");
+    }
+    return in;
+  }
 }
